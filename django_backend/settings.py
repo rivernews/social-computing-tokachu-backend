@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -23,9 +22,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'u!i#+1zn$n9wh1amo9$g-fp9kqa66h^bzniaivpi=3o5qi7b1z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+try:
+    # deployed local
+    from .credentials import *
+    DEBUG = True
+    ALLOWED_HOSTS = ["*"]
 
-ALLOWED_HOSTS = []
+except ImportError:
+    # deployed on amz eb
+    DEBUG = False
+    ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -85,8 +92,15 @@ WSGI_APPLICATION = 'django_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ['RDS_DB_NAME'],
+        'USER': os.environ['RDS_USERNAME'],
+        'PASSWORD': os.environ['RDS_PASSWORD'],
+        'HOST': os.environ['RDS_HOSTNAME'],
+        'PORT': os.environ['RDS_PORT'],
+        'OPTIONS': {
+            'sslmode': 'require',
+        }
     }
 }
 
@@ -130,3 +144,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'account.CustomUser' # override the default user model
+
+STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
