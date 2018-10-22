@@ -31,7 +31,7 @@ try:
 except ImportError:
     # deployed on amz eb
     DEBUG = False
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ["social-computing-tokachu-backend-dev2"]
 
 
 
