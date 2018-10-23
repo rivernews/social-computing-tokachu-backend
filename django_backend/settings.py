@@ -100,9 +100,9 @@ try:
             'PASSWORD': os.environ['RDS_PASSWORD'],
             'HOST': os.environ['RDS_HOSTNAME'],
             'PORT': os.environ['RDS_PORT'],
-            'OPTIONS': {
-                'sslmode': 'require',
-            }
+            # 'OPTIONS': {
+            #     'sslmode': 'require',
+            # }
         }
     }
 except:
