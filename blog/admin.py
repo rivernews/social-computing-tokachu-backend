@@ -1,3 +1,10 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
-# Register your models here.
+from .models import Post, Comment
+
+
+class PostViewAdmin(admin.ModelAdmin):
+	list_display = [ field.name for field in Post._meta.get_fields() ]
+
+admin.site.register(Post, PostViewAdmin)

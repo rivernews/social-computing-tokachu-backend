@@ -2,11 +2,15 @@
 
 ### Setup dev env
 
-- `python3 -m venv venv && pip install -r requirements.txt`
-- create `credentials.py` if you haven't had one under `django_backend/`
+- `python3 -m venv venv && . ./venv/bin/activate && pip install -r requirements.txt`
+- copy `credentials.py` if you haven't had one under `django_backend/`
 - `eb init`
 - For region choose `14`.
 - If prompt to enter `aws_access_key_id` & `aws_secret_access_key`, use those in `aws-shaungc-gmail-credentials.csv`.
+- `Select an application to use`, choose `1`.
+- `Do you wish to continue with CodeCommit? (y/N)`, say `N` or hit enter.
+- Start coding
+- `git add . && git commit -m "fix" && git push`
 
 ### ~~Initial Setup on Ubuntu~~
 
@@ -14,7 +18,7 @@
 - `apt install git`
 - `git clone https://github.com/rivernews/social-computing-tokachu-backend.git`
 - cd into project.
-- `python3 -m venv venv && pip install -r requirements.txt`
+- `python3 -m venv venv && . ./venv/bin/activate && pip install -r requirements.txt`
 
 - Setup database model
 
