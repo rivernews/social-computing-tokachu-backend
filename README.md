@@ -11,6 +11,8 @@
 - `Do you wish to continue with CodeCommit? (y/N)`, say `N` or hit enter.
 - Start coding
 - `git add . && git commit -m "fix" && git push`
+- `eb deploy`. Wait for it to finish. 
+- `eb open` to open the website / server.
 
 ### ~~Initial Setup on Ubuntu~~
 
