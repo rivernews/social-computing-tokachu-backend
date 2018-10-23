@@ -2,6 +2,7 @@
 
 ### Setup dev env
 
+- `cd` into project root folder.
 - `python3 -m venv venv && . ./venv/bin/activate && pip install -r requirements.txt`
 - copy `credentials.py` if you haven't had one under `django_backend/`
 - `eb init`
@@ -13,6 +14,7 @@
 ### Start coding!
 
 - Make changes.
+- Test how it works `./manage.py runserver`
 - `git add . && git commit -m "fix" && git push`
 - `eb deploy`. Wait for it to finish. 
 - `eb open` to open the website / server.
