@@ -17,7 +17,7 @@
 - `eb deploy`. Wait for it to finish. 
 - `eb open` to open the website / server.
 
-### ~~Initial Setup on Ubuntu~~
+### ~~Initial Setup~~
 
 - get sudo access, run command `su`
 - `apt install git`
