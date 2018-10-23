@@ -1,6 +1,14 @@
 # social-computing-tokachu-backend
 
-### Setup on Ubuntu
+### Setup dev env
+
+- `python3 -m venv venv && pip install -r requirements.txt`
+- create `credentials.py` if you haven't had one under `django_backend/`
+- `eb init`
+- For region choose `14`.
+- If prompt to enter `aws_access_key_id` & `aws_secret_access_key`, use those in `aws-shaungc-gmail-credentials.csv`.
+
+### ~~Initial Setup on Ubuntu~~
 
 - get sudo access, run command `su`
 - `apt install git`
@@ -17,5 +25,6 @@
 
 - Create new key pair...
 - No permission creating service link role? [See this post.](https://www.reddit.com/r/aws/comments/97q92g/aws_educate_how_to_create_rds_instance/) Setup [Servie link role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html)
+  - You should now be able to craete a db on RDS! MySQL may not require ssl so just comment out that in django `settings.py`.
 
 - `ENV NAME` is `sctokachudev`
