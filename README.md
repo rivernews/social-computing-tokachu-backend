@@ -9,7 +9,10 @@
 - If prompt to enter `aws_access_key_id` & `aws_secret_access_key`, use those in `aws-shaungc-gmail-credentials.csv`.
 - `Select an application to use`, choose `1`.
 - `Do you wish to continue with CodeCommit? (y/N)`, say `N` or hit enter.
-- Start coding
+
+### Start coding!
+
+- Make changes.
 - `git add . && git commit -m "fix" && git push`
 - `eb deploy`. Wait for it to finish. 
 - `eb open` to open the website / server.
