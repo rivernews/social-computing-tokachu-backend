@@ -4,6 +4,15 @@
 
 - `cd` into project root folder.
 - `python3 -m venv venv && . ./venv/bin/activate && pip install -r requirements.txt`
+  - If you got error `Could not find a version that satisfies the requirement in python`, [follow this SO post](https://stackoverflow.com/questions/49745995/pip-install-django-results-in-no-matching-distribution-found-for-django), run this 
+
+```bash
+curl https://bootstrap.pypa.io/get-pip.py | python
+pip install --upgrade setuptools
+```
+
+  - Then, run `pip install -r requirements.txt` again.
+
 - copy `credentials.py` if you haven't had one under `django_backend/`
 - `eb init`
 - For region choose `14`.
