@@ -4,7 +4,7 @@
 
 - `cd` into project root folder.
 - `python3 -m venv venv && . ./venv/bin/activate && pip install -r requirements.txt`
-  - If you got error `Could not find a version that satisfies the requirement in python`, [follow this SO post](https://stackoverflow.com/questions/49745995/pip-install-django-results-in-no-matching-distribution-found-for-django), run this 
+  - If you got error `Could not find a version that satisfies the requirement in python`, [follow this SO post](https://stackoverflow.com/questions/49745995/pip-install-django-results-in-no-matching-distribution-found-for-django), run this:
 
 ```bash
 curl https://bootstrap.pypa.io/get-pip.py | python
@@ -13,11 +13,24 @@ pip install --upgrade setuptools
 
   - Then, run `pip install -r requirements.txt` again.
 
+- If you got error when installing `mysqlclient`, try this:
+  - Did you install mysql? If not, run:
+    - `brew install mysql@5.7 && brew link --force mysql@5.7`
+    - `echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> ~/.bash_profile or ~/.zshrc`
+    - `export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"`
+    - `brew services start mysql@5.7`
+    - Remove the `venv` and start over again (from the top of this section).
+
+- Did you recently upgrade to Macos Mojave?
+  - If so, run `sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /`
+  - Remove the `venv` and start over again (from the top of this section).
+
+
 - copy `credentials.py` if you haven't had one under `django_backend/`
 - `eb init`
 - For region choose `14`.
 - If prompt to enter `aws_access_key_id` & `aws_secret_access_key`, use those in `aws-shaungc-gmail-credentials.csv`.
-- `Select an application to use`, choose `1`.
+- `Select an application to use`, choose the one that says `sctokachudev`.
 - `Do you wish to continue with CodeCommit? (y/N)`, say `N` or hit enter.
 
 ### Start coding!
