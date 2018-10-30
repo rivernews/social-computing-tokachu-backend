@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.page-container {
+    height: 100vh;
+    width: 100vw;
+    /* background-color: #9c73da; */
+    background: linear-gradient(to bottom, #d7bcff, #ab81eb);
+
+    display: flex; /** https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+    justify-content: center;
+    align-items: center;
+}
+
+.headline-box-container {
+    /* height: 40vh; */
+    min-width: 70vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.headline-container {
+    /* height: 100px; */
+    text-align: center;
+    color: #3d1a6f;
+
+    margin-bottom: 30px;
+}
+
+.headline-action-container {
+    /* height: 300px; */
+    /* background-color: aqua; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.headline-action-container > *:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.round-button {
+    border-radius: 20px;
+}

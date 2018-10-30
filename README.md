@@ -61,3 +61,7 @@ pip install --upgrade setuptools
   - You should now be able to craete a db on RDS! MySQL may not require ssl so just comment out that in django `settings.py`.
 
 - `ENV NAME` is `sctokachudev`
+
+# Reference
+
+- MDC [Web Components](https://github.com/material-components/material-components-web/blob/master/docs/getting-started.md)

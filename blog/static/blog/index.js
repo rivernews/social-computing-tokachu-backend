@@ -14,5 +14,7 @@ if(window.attachEvent) {
 }
 
 function main() {
-    alert("haha");
+    for (let element of document.querySelectorAll('.mdc-button')) {
+        mdc.ripple.MDCRipple.attachTo(element);
+    }
 }
