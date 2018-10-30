@@ -1,9 +1,14 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
     <title>Taitle of the document</title>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script src="{% static 'blog/index.js' %}"></script>
 </head>
 
 <body>
@@ -12,6 +17,8 @@
         Let's go to...<br>
         <a href="/api/posts">Posts API Endpoint</a><br>
         <a href="/api/users">Users API Endpoint</a><br>
+
+        <button class="foo-button mdc-button">Button</button>
     </p>
 </body>
 
