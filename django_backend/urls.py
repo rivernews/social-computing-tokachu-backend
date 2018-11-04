@@ -30,5 +30,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
 
-    path('', blog_views.home_view),
+    path('', include('user.urls')),
 ]
