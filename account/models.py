@@ -1,4 +1,7 @@
 from django.db import models
+from api.models import (
+    Pictures
+)
 
 from django.contrib.auth.models import AbstractUser # override default user model 'from django.contrib.auth.models import User'
 
@@ -7,6 +10,12 @@ from django.contrib.auth.models import AbstractUser # override default user mode
 
 class CustomUser(AbstractUser):
     REQUIRED_FIELDS = ['email', 'first_name', 'last_name'] # will prompt these when do createsuperuser
+    
+    profile_picture = models.ForeignKey(
+        Pictures,
+        null=True,
+        on_delete=models.SET_NULL
+    )
 
     def __init__(self, *args, **kwargs):
         self._meta.get_field('email').blank = False # alter the value in AbstractUser w/o additional settings: https://stackoverflow.com/questions/45722025/forcing-unique-email-address-during-registration-with-django

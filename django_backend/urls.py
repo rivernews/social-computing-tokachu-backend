@@ -18,6 +18,8 @@ from django.urls import path,include
 
 import blog.views as blog_views
 import account.views as account_views
+import api.views as api_views
+
 from django.views.generic import RedirectView
 
 from rest_framework import routers
@@ -25,6 +27,7 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'posts', blog_views.PostViewSet)
 router.register(r'users', account_views.UserViewSet)
+router.register(r'pictures', api_views.PicturesViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

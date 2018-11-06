@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'django_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-try:
+if not DEBUG:
     DATABASES = {
         'default': {
             # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -106,11 +106,25 @@ try:
             # }
         }
     }
-except:
+else:
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.sqlite3',
+    #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #     }
+    # }
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'local_tokachu',
+            'USER': 'local_tokachu',
+            'PASSWORD': 'tokachu',
+            'HOST': 'localhost',
+            'PORT': '3306',
+            # 'OPTIONS': {
+            #     'sslmode': 'require',
+            # }
         }
     }
 

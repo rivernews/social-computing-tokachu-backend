@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Pictures
+
+class PicturesViewAdmin(admin.ModelAdmin):
+	list_display = ("url_link", "description")
+
+admin.site.register(Pictures, PicturesViewAdmin)
