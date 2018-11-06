@@ -1,5 +1,5 @@
 from django.db import models
-from picture.models import Picture
+from api.models import Pictures
 
 # Create your models here.
 class Place(models.Model):
@@ -9,7 +9,7 @@ class Place(models.Model):
     min_lon = models.FloatField()
     max_lon = models.FloatField()
     place_photo = models.ForeignKey(
-        Picture,
+        Pictures,
         null=True,
         on_delete=models.CASCADE
         )

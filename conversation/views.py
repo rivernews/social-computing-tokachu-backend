@@ -2,25 +2,28 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import permissions
 from rest_framework import serializers
-from place.models import Place
-from place.serializers import PlaceSerializer
+from .models import Conversation
+from .serializers import ConversationSerializer
 from django.http import HttpResponse, JsonResponse
 
+
 # Create your views here.
-class PlaceViewSet(viewsets.ModelViewSet):
+class ConversationViewSet(viewsets.ModelViewSet):
     # permission_classes = (AllowOptionsIsAdminUserOrReadOnly,)
 
-    queryset = Place.objects.all()
-    serializer_class = PlaceSerializer
+    queryset = Conversation.objects.all()
+    serializer_class = ConversationSerializer
 
     def retrieve(self, request, pk=None):
-        queryset = Place.objects.filter(pk=pk)
+        queryset = Conversation.objects.filter(pk=pk)
         if queryset:
-            serializer = PlaceSerializer(queryset, many=True)
+            serializer = ConversationSerializer(queryset, many=True)
             return JsonResponse(serializer.data, status=201, safe=False)
         else:
             return JsonResponse({}, status=404)
+
     def perform_create(self, serializer):
-        serializer.save()
+        new_conversation = serializer.save()
+        
 
     
