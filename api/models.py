@@ -11,7 +11,6 @@ class Pictures(models.Model):
         blank=True,
         on_delete=models.SET_NULL
     )
-
     description = models.TextField(
         blank=True,
         max_length=500

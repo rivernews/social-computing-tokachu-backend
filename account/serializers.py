@@ -10,4 +10,3 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = get_user_model()
         fields = get_field_name_list(get_user_model())
-        # fields = ('email','id')
