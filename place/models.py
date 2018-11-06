@@ -3,10 +3,11 @@ from picture.models import Picture
 
 # Create your models here.
 class Place(models.Model):
-    name = models.CharField(max_length=128)
-    center_lat = models.FloatField()
-    center_lon = models.FloatField()
-    radius = models.FloatField()
+    name = models.CharField(max_length=64)
+    min_lat = models.FloatField()
+    max_lat = models.FloatField()
+    min_lon = models.FloatField()
+    max_lon = models.FloatField()
     place_photo = models.ForeignKey(
         Picture,
         null=True,

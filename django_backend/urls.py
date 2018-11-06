@@ -18,6 +18,7 @@ from django.urls import path,include
 
 import blog.views as blog_views
 import account.views as account_views
+import place.views as place_views
 from django.views.generic import RedirectView
 
 from rest_framework import routers
@@ -25,6 +26,7 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'posts', blog_views.PostViewSet)
 router.register(r'users', account_views.UserViewSet)
+router.register(r'place', place_views.PlaceViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
