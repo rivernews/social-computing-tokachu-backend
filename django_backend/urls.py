@@ -28,6 +28,8 @@ router = routers.DefaultRouter()
 router.register(r'posts', blog_views.PostViewSet)
 router.register(r'users', account_views.UserViewSet)
 router.register(r'pictures', api_views.PicturesViewSet)
+router.register(r'locations', api_views.LocationViewSet)
+router.register(r'tags', api_views.TagViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -15,3 +15,24 @@ class Pictures(models.Model):
         blank=True,
         max_length=500
     )
+
+    modified_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Location(models.Model):
+    label = models.CharField(
+        blank=True,
+        max_length=100
+    )
+    
+    modified_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Tag(models.Model):
+    label = models.CharField(
+        blank=True,
+        max_length=100
+    )
+    
+    modified_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
