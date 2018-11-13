@@ -29,7 +29,16 @@ class Location(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 class Tag(models.Model):
-    label = models.CharField(
+    tag_name = models.CharField(
+        blank=True,
+        max_length=100
+    )
+    
+    modified_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Theme(models.Model):
+    theme_name = models.CharField(
         blank=True,
         max_length=100
     )

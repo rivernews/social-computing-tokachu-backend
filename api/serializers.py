@@ -1,7 +1,8 @@
 from .models import (
     Pictures,
     Location,
-    Tag
+    Tag,
+    Theme
 )
 from rest_framework import serializers
 
@@ -19,4 +20,10 @@ class LocationSerializer(serializers.HyperlinkedModelSerializer):
 class TagSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Tag
+        fields = '__all__'
+
+
+class ThemeSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Theme
         fields = '__all__'
