@@ -2,10 +2,18 @@ from rest_framework import viewsets
 from rest_framework import serializers
 
 #### Importing Models ####
-from .models import Pictures
+from .models import (
+    Pictures,
+    Location,
+    Tag
+)
 
 #### Importing Serializers ####
-from .serializers import PicturesSerializer
+from .serializers import (
+    PicturesSerializer,
+    LocationSerializer,
+    TagSerializer
+)
 
 class PicturesViewSet(viewsets.ModelViewSet):
     # permission_classes = (AllowOptionsIsAdminUserOrReadOnly,)
@@ -21,3 +29,15 @@ class PicturesViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+class LocationViewSet(viewsets.ModelViewSet):
+    # permission_classes = (AllowOptionsIsAdminUserOrReadOnly,)
+
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
+
+class TagViewSet(viewsets.ModelViewSet):
+    # permission_classes = (AllowOptionsIsAdminUserOrReadOnly,)
+
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer

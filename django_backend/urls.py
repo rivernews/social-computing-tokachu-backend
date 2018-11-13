@@ -30,9 +30,15 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'posts', blog_views.PostViewSet)
 router.register(r'users', account_views.UserViewSet)
+
+router.register(r'pictures', api_views.PicturesViewSet)
+router.register(r'locations', api_views.LocationViewSet)
+router.register(r'tags', api_views.TagViewSet)
+
 router.register(r'place', place_views.PlaceViewSet)
 router.register(r'event', event_views.EventViewSet)
 router.register(r'conversation', conversation_views.ConversationViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
