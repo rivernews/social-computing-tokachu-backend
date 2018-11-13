@@ -5,14 +5,16 @@ from rest_framework import serializers
 from .models import (
     Pictures,
     Location,
-    Tag
+    Tag,
+    Theme
 )
 
 #### Importing Serializers ####
 from .serializers import (
     PicturesSerializer,
     LocationSerializer,
-    TagSerializer
+    TagSerializer,
+    ThemeSerializer
 )
 
 class PicturesViewSet(viewsets.ModelViewSet):
@@ -41,3 +43,7 @@ class TagViewSet(viewsets.ModelViewSet):
 
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
+
+class ThemeViewSet(viewsets.ModelViewSet):
+    queryset = Theme.objects.all()
+    serializer_class = ThemeSerializer

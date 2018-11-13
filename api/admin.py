@@ -17,6 +17,6 @@ class LocationViewAdmin(admin.ModelAdmin):
 admin.site.register(Location, LocationViewAdmin)
 
 class TagViewAdmin(admin.ModelAdmin):
-	list_display = [ field.name for field in Tag._meta.get_fields() ]
+	list_display = [ field.name for field in Tag._meta.get_fields()][2:]
 
 admin.site.register(Tag, TagViewAdmin)

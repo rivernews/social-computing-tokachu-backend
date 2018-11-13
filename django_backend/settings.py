@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'place',
     'event',
     'conversation',
+    'connection'
 ]
 
 MIDDLEWARE = [
