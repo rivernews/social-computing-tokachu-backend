@@ -43,7 +43,6 @@ router.register(r'conversation', conversation_views.ConversationViewSet)
 router.register(r'user_event', connection_views.User_EventViewSet)
 router.register(r'event_picture', connection_views.Event_PictureViewSet)
 router.register(r'interest_list', connection_views.Interest_listViewSet)
-router.register(r'interest_list', connection_views.Interest_listViewSet)
 router.register(r'user_conversation', connection_views.User_ConversationViewSet)
 router.register(r'event_tag', connection_views.Event_TagViewSet)
 

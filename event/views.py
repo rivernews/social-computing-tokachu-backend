@@ -6,6 +6,7 @@ from .models import Event
 from .serializers import EventSerializer
 from django.http import HttpResponse, JsonResponse
 from conversation.serializers import ConversationSerializer
+from connection.serializers import User_ConversationSerializer
 
 
 # Create your views here.
@@ -26,10 +27,14 @@ class EventViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         # create a conversation here
         new_event = serializer.save()
-        print(new_event.id)
         con = ConversationSerializer(data={"event_id": new_event.id, "group": 1})
+
         if con.is_valid():
-            con.save()
+            newCon = con.save()
+            user_con = User_ConversationSerializer(data={"user_id": new_event.owner_id.id, "conversation_id": newCon.id})
+            if user_con.is_valid():
+                user_con.save()
+
 
 
     

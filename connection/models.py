@@ -10,11 +10,13 @@ from conversation.models import Conversation
 class User_Event(models.Model):
     event_id = models.ForeignKey(
         Event,
-        on_delete=models.CASCADE
+        null=True,
+        on_delete=models.SET_NULL
         )
     user_id = models.ForeignKey(
         get_user_model(), # or you can use '[from django.contrib.auth import get_user_model]' then get_user_model(). but only use these in models; you should use account.model.User anywhere else.
-        on_delete=models.CASCADE
+        null=True,
+        on_delete=models.SET_NULL
     ) 
     state = models.IntegerField() #0 for past, 1 for future
 
@@ -31,41 +33,49 @@ class Theme_Tag(models.Model):
 class Event_Picture(models.Model):
     event_id = models.ForeignKey(
         Event,
-        on_delete=models.CASCADE
+        null=True,
+        on_delete=models.SET_NULL
         )
     
     picture_id = models.ForeignKey(
         Pictures,
-        on_delete=models.CASCADE
+        null=True,
+        on_delete=models.SET_NULL
     )
 
 
 class Interest_list(models.Model):
     event_id = models.ForeignKey(
         Event,
-        on_delete=models.CASCADE
+        null=True,
+        on_delete=models.SET_NULL
         )
     user_id = models.ForeignKey(
         get_user_model(), # or you can use '[from django.contrib.auth import get_user_model]' then get_user_model(). but only use these in models; you should use account.model.User anywhere else.
-        on_delete=models.CASCADE
+        null=True,
+        on_delete=models.SET_NULL
     ) 
 
 class User_Conversation(models.Model):
     user_id = models.ForeignKey(
         get_user_model(), # or you can use '[from django.contrib.auth import get_user_model]' then get_user_model(). but only use these in models; you should use account.model.User anywhere else.
-        on_delete=models.CASCADE
+        null=True,
+        on_delete=models.SET_NULL
     ) 
     conversation_id = models.ForeignKey(
         Conversation,
-        on_delete=models.CASCADE
+        null=True,
+        on_delete=models.SET_NULL
     ) 
 
 class Event_Tag(models.Model):
     event_id = models.ForeignKey(
         Event,
-        on_delete=models.CASCADE
+        null=True,
+        on_delete=models.SET_NULL
         )
     tag_id = models.ForeignKey(
         Tag, # or you can use '[from django.contrib.auth import get_user_model]' then get_user_model(). but only use these in models; you should use account.model.User anywhere else.
-        on_delete=models.CASCADE
+        null=True,
+        on_delete=models.SET_NULL
     )

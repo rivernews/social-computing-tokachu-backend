@@ -5,6 +5,7 @@ class Conversation(models.Model):
     channel_name = models.CharField(max_length=128, null=True)
     event_id = models.ForeignKey(
         Event,
-        on_delete=models.CASCADE
+        null=True,
+        on_delete=models.SET_NULL
         )
     group = models.IntegerField()
