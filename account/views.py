@@ -22,7 +22,7 @@ class UserViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['post'])
     def log_in(self, request, pk=None):
 
-        queryset = get_user_model().objects.filter(username=pk)
+        queryset = get_user_model().objects.filter(id=pk)
         if queryset:
             pw = queryset.values()[0]['password']
             if pw == request.POST['password']:
