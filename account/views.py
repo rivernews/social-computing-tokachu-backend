@@ -21,14 +21,13 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['post'])
     def log_in(self, request, pk=None):
-
-        queryset = get_user_model().objects.filter(id=pk)
-        if queryset:
-            pw = queryset.values()[0]['password']
-            if pw == request.POST['password']:
-                serializer = UserSerializer(queryset, many=True)
-                return JsonResponse(serializer.data[0], status=201, safe=False)
+        try:
+            queryset = get_user_model().objects.filter(id=pk)
+            if queryset[0].check_password(
+                request.POST.get('password', None)
+            ):
+                return JsonResponse(queryset.values()[0], status=201, safe=False)
             else:
                 return JsonResponse({}, status=403, safe=False)
-        else:
+        except get_user_model().DoesNotExist:
             return JsonResponse({}, status=404)
