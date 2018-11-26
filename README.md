@@ -64,4 +64,6 @@ pip install --upgrade setuptools
 
 # Reference
 
+
+- [How to re-set local db?](https://github.com/rivernews/social-computing-tokachu-backend/pull/2)
 - MDC [Web Components](https://github.com/material-components/material-components-web/blob/master/docs/getting-started.md)
