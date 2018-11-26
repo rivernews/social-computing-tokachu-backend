@@ -18,12 +18,9 @@ from django.urls import path,include
 
 import blog.views as blog_views
 import account.views as account_views
-<<<<<<< HEAD
 import place.views as place_views
-=======
 import api.views as api_views
 
->>>>>>> 8918ffe5bc461df3daaebd10760f05771cb55af3
 from django.views.generic import RedirectView
 
 from rest_framework import routers
@@ -31,11 +28,8 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'posts', blog_views.PostViewSet)
 router.register(r'users', account_views.UserViewSet)
-<<<<<<< HEAD
 router.register(r'place', place_views.PlaceViewSet)
-=======
 router.register(r'pictures', api_views.PicturesViewSet)
->>>>>>> 8918ffe5bc461df3daaebd10760f05771cb55af3
 
 urlpatterns = [
     path('admin/', admin.site.urls),
