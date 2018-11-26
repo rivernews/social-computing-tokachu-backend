@@ -10,6 +10,7 @@ from connection.serializers import User_ConversationSerializer
 from rest_framework.decorators import action
 from datetime import datetime
 from datetime import timezone
+from django.db.models import Q
 
 
 # Create your views here.
@@ -43,13 +44,19 @@ class EventViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['get'])
     def search(self, request):
         dateFormatter = "%Y-%m-%d %H:%M"
-        categories = (request.GET['category']).split(",")
+        term = request.GET['term']
+        categories = None
+        if request.GET['category'] != "":
+            categories = (request.GET['category']).split(",")
         start_time = datetime.strptime(request.GET['start_time'], dateFormatter).replace(tzinfo=timezone.utc)
         end_time = datetime.strptime(request.GET['end_time'], dateFormatter).replace(tzinfo=timezone.utc)
         print(categories)
         print(start_time)
         print(end_time)
-        queryset = Event.objects.filter(start_time__range=(start_time, end_time)).filter(category__in=categories)
+
+        queryset = Event.objects.filter(start_time__range=(start_time, end_time)).filter(Q(name__icontains=term) | Q(description__icontains=term))
+        if categories and queryset:
+            queryset.filter(category__in=categories)
         if queryset:
             serializer = EventSerializer(queryset, many=True)
             return JsonResponse(serializer.data, status=201, safe=False)
