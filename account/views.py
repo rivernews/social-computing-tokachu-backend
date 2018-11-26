@@ -19,10 +19,10 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = get_user_model().objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
-    @action(detail=True, methods=['post'])
+    @action(detail=False, methods=['post'])
     def log_in(self, request, pk=None):
 
-        queryset = get_user_model().objects.filter(username=pk)
+        queryset = get_user_model().objects.filter(email=request.POST['email'])
         if queryset:
             pw = queryset.values()[0]['password']
             if pw == request.POST['password']:

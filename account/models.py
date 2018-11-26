@@ -20,6 +20,8 @@ class CustomUser(AbstractUser):
     def __init__(self, *args, **kwargs):
         self._meta.get_field('email').blank = False # alter the value in AbstractUser w/o additional settings: https://stackoverflow.com/questions/45722025/forcing-unique-email-address-during-registration-with-django
         self._meta.get_field('email')._unique = True
+        self._meta.get_field('username').blank = True
+        self._meta.get_field('username')._unique = False
         self._meta.get_field('first_name').blank = False
         self._meta.get_field('last_name').blank = False
         super(CustomUser, self).__init__(*args, **kwargs)
