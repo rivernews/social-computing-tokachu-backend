@@ -2,7 +2,8 @@ from rest_framework import viewsets
 from rest_framework import serializers
 from rest_framework.decorators import action
 from django.http import HttpResponse, JsonResponse
-
+from conversation.models import Conversation
+from conversation.serializers import ConversationSerializer
 #### Importing Models ####
 from .models import (
     User_Event,
@@ -101,16 +102,24 @@ class User_ConversationViewSet(viewsets.ModelViewSet):
     queryset = User_Conversation.objects.all()
     serializer_class = User_ConversationSerializer
     
-    @action(detail=True, methods=['get'])
+    @action(detail=False, methods=['get'])
     def get_conversations_by_user(self, request, pk=None):
-        queryset = User_Conversation.objects.filter(user_id=pk)
+        print(request.GET.items())
+        queryset = User_Conversation.objects.filter(user_id=request.GET['id'])
         if queryset:
-            serializer = User_ConversationSerializer(queryset, many=True)
-            return JsonResponse(serializer.data, status=201, safe=False)
+            conversation_list = []
+            for i in queryset.values("conversation_id"):
+                conversation_list.append(i["conversation_id"])
+            conversation_set = Conversation.objects.filter(id__in=conversation_list)
+            if conversation_set:
+                serializer = ConversationSerializer(conversation_set, many=True)
+                return JsonResponse(serializer.data, status=201, safe=False)
+            else:
+                return JsonResponse({}, status=403)
         else:
             return JsonResponse({}, status=404)
 
-    @action(detail=True, methods=['get'])
+    @action(detail=False, methods=['get'])
     def get_userList_by_conversation(self, request, pk=None):
         queryset = User_Conversation.objects.filter(conversation_id=pk)
         if queryset:
