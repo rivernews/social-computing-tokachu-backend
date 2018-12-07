@@ -51,12 +51,15 @@ class EventViewSet(viewsets.ModelViewSet):
         start_time = datetime.strptime(request.GET['start_time'], dateFormatter).replace(tzinfo=timezone.utc)
         end_time = datetime.strptime(request.GET['end_time'], dateFormatter).replace(tzinfo=timezone.utc)
         print(categories)
+        
+
         print(start_time)
         print(end_time)
 
         queryset = Event.objects.filter(start_time__range=(start_time, end_time)).filter(Q(name__icontains=term) | Q(description__icontains=term))
         if categories and queryset:
             queryset.filter(category__in=categories)
+            print(queryset)
         if queryset:
             serializer = EventSerializer(queryset, many=True)
             return JsonResponse(serializer.data, status=201, safe=False)
